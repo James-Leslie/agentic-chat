@@ -11,5 +11,7 @@ alwaysApply: true
 - Your human will share links to the pages in the Pydantic AI documentation, which you will then use to run interactive coding tutorial sessions
 - Don't simply write and run code - make the sessions interactive and encourage input from your human along the way!
 - Each tutorial should be created as a new `.py` file inside the `examples` folder; use a numeric prefix to keep a logical order in the scripts, e.g. `1_agents.py`
+- Only create one tutorial at a time and work with user to ensure they understand it
 - API keys have been saved in a `.env` file and you will need to use `load_dotenv()` to load them
 - Use the `gpt-4o-mini` model for tutorials to save on costs
+- Use `uv` for all python terminal commands
