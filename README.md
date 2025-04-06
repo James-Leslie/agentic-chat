@@ -1,63 +1,80 @@
-# Multi-Agent AI Assistant
+# Pydantic AI Tutorial Project
 
-A sophisticated multi-agent AI system built with Pydantic AI and Streamlit, designed to accomplish complex tasks through agent collaboration.
+A tutorial project for learning and experimenting with Pydantic AI, a powerful framework for building AI applications with Large Language Models (LLMs).
 
 ## Project Overview
 
-This project implements a multi-agent architecture where different specialized AI agents work together to solve problems. The system features:
+This project provides a structured learning path for Pydantic AI, featuring:
 
-- Multiple specialized agents with different capabilities
-- A coordinator that manages task delegation and agent communication
-- A Streamlit-based UI for interacting with the system
-- Pydantic models for structured data handling
+- Step-by-step tutorial examples
+- Clean, well-documented code
+- Progressive learning from basic to advanced concepts
+- Focus on practical implementation patterns
+
+## Learning Path
+
+The examples in the `examples/` directory are organized to introduce Pydantic AI concepts progressively:
+
+1. **Basic Agents**: Creating and running simple AI agents
+2. **Function Tools**: Extending agents with custom tools and functionality
+3. **Structured Results**: Working with type-safe, validated outputs
+4. **More to come!** Future tutorials will cover streaming, chat history, and more
 
 ## Project Structure
 
 ```
-multi-agent-assistant/
+pydantic-ai-tutorial/
 ├── .cursor/           # Cursor AI IDE configuration
-├── agents/            # Individual agent implementations
-│   ├── __init__.py
-│   ├── base.py        # Base agent class
-│   └── specialized/   # Specialized agent implementations
-├── coordinator/       # Agent coordination logic
-│   ├── __init__.py
-│   └── orchestrator.py
-├── models/            # Pydantic data models
-│   ├── __init__.py
-│   └── messages.py    # Message schemas
-├── app/                # Streamlit UI components
-│   └── app.py         # Main Streamlit application
-├── utils/             # Utility functions
+├── examples/          # Tutorial examples
+│   ├── 1_basic_agent.py
+│   ├── 2_agent_with_tools.py
+│   ├── 3_structured_results.py
+│   └── README.md      # Example-specific documentation
 ├── pyproject.toml     # Project dependencies
 └── README.md          # This file
 ```
 
-## Development Roadmap
-
-1. **Phase 1: Foundation**
-   - Set up project structure
-   - Define core agent interfaces
-   - Implement basic message passing
-
-2. **Phase 2: Agent Implementation**
-   - Develop specialized agents
-   - Create the coordinator system
-   - Implement agent communication protocols
-
-3. **Phase 3: UI Development**
-   - Build Streamlit interface
-   - Implement visualization of agent activities
-   - Create user input handling
-
-4. **Phase 4: Testing & Refinement**
-   - Test agent interactions
-   - Optimize performance
-   - Add advanced features
-
 ## Getting Started
 
 1. Clone this repository
-2. Run `uv init` to initialize the project
-3. Install dependencies with `uv sync`
-4. Run the application with `uv run streamlit run ui/app.py`
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   or with uv:
+   ```bash
+   uv pip install -r requirements.txt
+   ```
+4. Create a `.env` file with your OpenAI API key:
+   ```
+   OPENAI_API_KEY=your_api_key_here
+   ```
+5. Run the examples:
+   ```bash
+   python examples/1_basic_agent.py
+   ```
+
+## Features Covered
+
+- ✅ Basic AI agents
+- ✅ Function tools
+- ✅ Structured results with Pydantic models
+- 🔲 Streaming responses
+- 🔲 Chat history and conversations
+- 🔲 Error handling and retries
+- 🔲 Multi-agent systems
+
+## Resources
+
+- [Pydantic AI Documentation](https://ai.pydantic.dev/)
+- [OpenAI API Documentation](https://platform.openai.com/docs/introduction)
+- [Pydantic Documentation](https://docs.pydantic.dev/)
+
+## License
+
+MIT
