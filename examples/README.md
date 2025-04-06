@@ -1,31 +1,11 @@
 # Pydantic AI Tutorial Examples
-
 This folder contains tutorial examples for learning Pydantic AI, a powerful framework for building AI applications with LLMs.
 
-## Prerequisites
-
-1. Make sure you have Python 3.8+ installed
-2. Install the required packages:
-   ```bash
-   pip install pydantic-ai python-dotenv
-   ```
-3. Create a `.env` file in the root directory with your OpenAI API key:
-   ```
-   OPENAI_API_KEY=your_api_key_here
-   ```
-
 ## Running the Examples
-
-Each example can be run directly as a Python script:
-
-```bash
-python examples/1_basic_agent.py
-```
-
-If you're using `uv` for Python package management:
+Each example can be run using `uv`:
 
 ```bash
-uv run python examples/1_basic_agent.py
+uv run examples/1_basic_agent.py
 ```
 
 ## Examples Overview
