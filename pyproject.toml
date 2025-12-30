@@ -1,16 +1,20 @@
 [project]
-name = "agentic-chat"
+name = "streamlit-chat"
 version = "0.1.0"
-description = "Add your description here"
+description = "Example chat apps built with Streamlit"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "pydantic-ai>=0.0.52",
-    "python-dotenv>=1.1.0",
-    "streamlit>=1.44.1",
+    "langchain>=1.2.0",
+    "langchain-community>=0.4.1",
+    "langchain-openai>=1.1.6",
+    "openai>=2.14.0",
+    "python-dotenv>=1.2.1",
+    "streamlit>=1.52.2",
+    "sympy>=1.14.0",
 ]
 
 [dependency-groups]
 dev = [
-    "ipykernel>=6.29.5",
+    "ipykernel>=7.1.0",
 ]

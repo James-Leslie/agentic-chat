@@ -1,59 +1,54 @@
-# Pydantic AI Tutorial Project
-A tutorial project for learning and experimenting with Pydantic AI, a powerful framework for building AI applications with Large Language Models (LLMs).
+# Streamlit chat examples
+Simple examples of using Streamlit for Generative AI chat applications.
 
-## Project Overview
-This project provides a structured learning path for Pydantic AI, featuring:
+## Getting started
 
-- Step-by-step tutorial examples
-- Clean, well-documented code
-- Progressive learning from basic to advanced concepts
-- Focus on practical implementation patterns
-
-## Learning Path
-The examples in the `examples/` directory are organized to introduce Pydantic AI concepts progressively:
-
-1. **Basic Agents**: Creating and running simple AI agents
-2. **Function Tools**: Extending agents with custom tools and functionality
-3. **Structured Results**: Working with type-safe, validated outputs
-4. **More to come!** Future tutorials will cover streaming, chat history, and more
-
-## Project Structure
-```
-pydantic-ai-tutorial/
-├── .cursor/           # Cursor AI IDE configuration
-├── examples/          # Tutorial examples
-│   ├── 1_basic_agent.py
-│   ├── 2_agent_with_tools.py
-│   ├── 3_structured_results.py
-│   └── README.md      # Example-specific documentation
-├── pyproject.toml     # Project dependencies
-└── README.md          # This file
+### 1. Sync the virtual environment
+```bash
+uv sync
 ```
 
-## Getting Started
-1. Clone this repository
-2. Create a `.env` file with your OpenAI API key:
-   ```
-   OPENAI_API_KEY=your_api_key_here
-   ```
-3. Run the examples:
-   ```bash
-   uv run examples/1_basic_agent.py
-   ```
+### 2. Create a `.env` file
+Use the `.env.example` file as a template to create your own `.env` file. Make sure to set the `AZURE_OPENAI_API_KEY` variable with your Azure OpenAI API key.
 
-## Features Covered
-- ✅ Basic AI agents
-- ✅ Function tools
-- ✅ Structured results with Pydantic models
-- 🔲 Streaming responses
-- 🔲 Chat history and conversations
-- 🔲 Error handling and retries
-- 🔲 Multi-agent systems
+### 3. Run the main app
+The main entry point is `app/app.py`. All example chat apps are in the `app/pages/` folder and will appear as selectable pages in the Streamlit sidebar.
 
-## Resources
-- [Pydantic AI Documentation](https://ai.pydantic.dev/)
-- [OpenAI API Documentation](https://platform.openai.com/docs/introduction)
-- [Pydantic Documentation](https://docs.pydantic.dev/)
+```bash
+uv run streamlit run app/app.py
+```
 
-## License
-MIT
+## File structure
+The main structure of the app is as follows:
+```
+app/
+|__ app.py
+|__ pages/
+|____ <page1>.py
+|____ <page2>.py
+|__ visual_utils.py
+```
+
+`app.py` is the main entry point for the Streamlit app.   
+This file performs a few tasks that are common to all pages:
+- Loads environment variables from the `.env` file
+- Sets up the Streamlit page configuration
+- Define the page navigation structure
+
+This means we don't have to repeat these steps in each example page.
+
+The `pages/` folder contains different example chat applications. Each file in this folder represents a separate page in the Streamlit app.   
+Current example pages include:
+- `openai.py`: Basic chat app that uses the `openai` Python SDK directly.
+- `langchain.py`: Chat app that uses the `langchain` Python SDK.
+- `tool_calling.py`: Chat app that demonstrates calling tools using the `langchain` Python SDK.
+
+Lastly, `visual_utils.py` contains utility functions for rendering chat messages in the Streamlit app.
+
+## References
+- [Build a basic LLM chat app | Streamlit](https://docs.streamlit.io/develop/tutorials/chat-and-llm-apps/build-conversational-apps)
+
+## To do:
+  - Use `StreamlitCallbackHandler` to display thoughts and actions of agent
+    - https://docs.langchain.com/oss/python/integrations/callbacks/streamlit#additional-scenarios
+    - https://github.com/langchain-ai/langchain-community/blob/main/libs/community/langchain_community/callbacks/streamlit/streamlit_callback_handler.py
