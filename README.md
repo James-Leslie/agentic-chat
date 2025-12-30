@@ -11,6 +11,8 @@ uv sync
 ### 2. Create a `.env` file
 Use the `.env.example` file as a template to create your own `.env` file. Make sure to set the values of the necessary API keys using your own keys.
 
+> ⚠️ IMPORTANT: Without this file and the correct API keys, the app will not function properly.
+
 ### 3. Run the main app
 The main entry point is `app/app.py`. All example chat apps are in the `app/pages/` folder and will appear as selectable pages in the Streamlit sidebar.
 
