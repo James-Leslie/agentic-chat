@@ -2,8 +2,8 @@
 
 import streamlit as st
 from langchain.agents import create_agent
-from langchain_core.messages import convert_to_openai_messages
 from langgraph.checkpoint.memory import InMemorySaver
+from visual_utils import stream_langchain_messages
 
 st.title("🦜🔗 LangChain Agent Chat")
 st.markdown("An example of a basic chat application using the `langchain` Python SDK.")
@@ -21,15 +21,12 @@ agent = create_agent(
 )
 
 # ------------------------------------------------------------ 2. Show previous messages
-# Get previous messages from the agent's state
 messages = agent.get_state(st.session_state.config).values.get("messages")
 
 if messages:
-    # Display chat messages from history on app rerun
-    messages = convert_to_openai_messages(messages)
     for message in messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+        with st.chat_message(message.type):
+            st.markdown(message.content)
 
 
 # ----------------------------------------------------------------- 3. Accept user input
@@ -38,20 +35,11 @@ if prompt := st.chat_input("Ask a question"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # --------------------------------------------- + 4. Generate response and render it
-    def langchain_stream_to_chunks(stream):
-        """Helper function to convert LangChain stream to a generator compatible with Streamlit."""
-        for chunk, _ in stream:
-            # Only yield non-empty content
-            if hasattr(chunk, "content") and chunk.content:
-                yield chunk.content
-
-    # Display assistant response in chat message container
+    # --------------------------------------------- + 4. Generate response and stream it
     with st.chat_message("assistant"):
-        # Invoke the agent to get a response
         stream = agent.stream(
             {"messages": [{"role": "user", "content": prompt}]},
             config=st.session_state.config,
             stream_mode="messages",
         )
-        st.write_stream(langchain_stream_to_chunks(stream))
+        st.write_stream(stream_langchain_messages(stream))

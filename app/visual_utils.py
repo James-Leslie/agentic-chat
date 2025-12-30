@@ -11,6 +11,24 @@ def generate_message_stream(content: str) -> Generator[str, None, None]:
         time.sleep(0.01)
 
 
+def stream_langchain_messages(stream):
+    """
+    Extract content from LangChain message stream for use with st.write_stream().
+
+    Converts LangGraph's stream_mode="messages" output (which yields tuples of
+    (message_chunk, metadata)) into simple content strings that Streamlit can display.
+
+    Args:
+        stream: LangGraph stream iterator with stream_mode="messages"
+
+    Yields:
+        str: Content chunks from the message stream
+    """
+    for chunk, metadata in stream:
+        if chunk.content:
+            yield chunk.content
+
+
 def display_empty_chat() -> None:
     """
     Display the initial empty chat interface with title, description, chat input, and example suggestions.
