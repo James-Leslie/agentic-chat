@@ -36,3 +36,9 @@ This repository serves as a hands-on learning resource for developers exploring 
 - `uv sync` - Sync dependencies
 
 **⚠️ IMPORTANT:** `uv` is a new tool (2024). When unsure about any `uv` command or behavior, ALWAYS search the official documentation: `https://docs.astral.sh/uv/`.
+
+## 2. LangChain
+This project uses LangChain v1.x. Use the `docs-langchain` MCP server to search for LangChain v1.x documentation and examples.
+
+## 3. Streamlit
+Streamlit is used for building the web interface. Refer to the official Streamlit documentation for guidance on building and customizing Streamlit apps: `https://docs.streamlit.io/`
