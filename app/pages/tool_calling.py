@@ -1,10 +1,8 @@
 # https://docs.langchain.com/oss/python/langchain/quickstart
-import os
 
 import streamlit as st
 import sympy
 from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import InMemorySaver
 from visual_utils import display_conversation, unpack_agent_updates
 
@@ -15,13 +13,6 @@ st.markdown("An example of a basic chat application using the `langchain` Python
 if "memory" not in st.session_state:
     st.session_state.memory = InMemorySaver()
     st.session_state.config = {"configurable": {"thread_id": "1"}}
-
-# initialize model using custom endpoint
-llm = ChatOpenAI(
-    model="gpt-4.1-mini",
-    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    base_url=os.getenv("AZURE_OPENAI_ENDPOINT"),
-)
 
 
 def calculate(expression: str) -> str:
@@ -40,7 +31,7 @@ def calculate(expression: str) -> str:
 
 # create the agent by combining the model and the function
 agent = create_agent(
-    model=llm,
+    model="claude-haiku-4-5",
     tools=[calculate],
     checkpointer=st.session_state.memory,
     system_prompt="You are a helpful maths assistant. Use your calculator to help with maths problems.",

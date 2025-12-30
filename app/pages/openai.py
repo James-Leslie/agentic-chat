@@ -1,7 +1,6 @@
 # Description: A basic chat application using Streamlit and OpenAI.
 # https://docs.streamlit.io/develop/tutorials/chat-and-llm-apps/build-conversational-apps
 
-import os
 
 import streamlit as st
 from openai import OpenAI
@@ -11,10 +10,7 @@ st.markdown("An example of a basic chat app using the `openai` Python client lib
 
 # ------------------------------------------------------ 1. Initialize the OpenAI client
 # OpenAI client
-client = OpenAI(
-    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    base_url=os.getenv("AZURE_OPENAI_ENDPOINT"),
-)
+client = OpenAI()
 
 # ------------------------------------------------------------ 2. Show previous messages
 if "messages" not in st.session_state:
@@ -37,7 +33,7 @@ if prompt := st.chat_input("Ask a question"):
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         stream = client.chat.completions.create(
-            model="gpt-4.1-mini",
+            model="gpt-5-nano",
             messages=[
                 {"role": m["role"], "content": m["content"]}
                 for m in st.session_state.messages
