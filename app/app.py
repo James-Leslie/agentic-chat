@@ -8,7 +8,7 @@ load_dotenv()
 
 st.set_page_config(
     page_title="Agent chat",  # Shows up as the name of the browser tab
-    page_icon=":material/raven:",  # Favicon for the browser tab
+    page_icon=":material/robot:",  # Favicon for the browser tab
     layout="centered",
 )
 
