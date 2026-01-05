@@ -14,11 +14,8 @@ st.set_page_config(
 
 pg = st.navigation(
     [
-        st.Page("pages/openai.py", title="OpenAI", icon=":material/cyclone:"),
-        st.Page("pages/langchain.py", title="LangChain", icon=":material/raven:"),
-        st.Page(
-            "pages/tool_calling.py", title="Tool Calling", icon=":material/handyman:"
-        ),
+        st.Page("pages/quickstart.py", title="LangChain", icon=":material/raven:"),
+        st.Page("pages/tools.py", title="Tool Calling", icon=":material/handyman:"),
     ],
     position="top",
 )
