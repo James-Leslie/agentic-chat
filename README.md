@@ -1,17 +1,23 @@
 # Streamlit chat examples
 Simple examples of using Streamlit for Generative AI chat applications.
 
-## Getting started
+## Environment setup
 
-### 1. Sync the virtual environment
+### 1. Environment variables
+This app requires certain environment variables to be set for API keys.   
+You can use the provided `.env.example` file as a template to create your own `.env` file.   
+Make sure to set the values of the necessary API keys using your own keys.
+
+Accounts you will need to sign up for:
+- [Anthropic](https://platform.claude.com)
+- [LangSmith](https://smith.langchain.com)
+
+> ⚠️ IMPORTANT: Without this file and the correct API keys, the app will not function properly.
+
+### 2. Python dependencies
 ```bash
 uv sync
 ```
-
-### 2. Create a `.env` file
-Use the `.env.example` file as a template to create your own `.env` file. Make sure to set the values of the necessary API keys using your own keys.
-
-> ⚠️ IMPORTANT: Without this file and the correct API keys, the app will not function properly.
 
 ### 3. Run the main app
 The main entry point is `app/app.py`. All example chat apps are in the `app/pages/` folder and will appear as selectable pages in the Streamlit sidebar.
