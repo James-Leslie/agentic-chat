@@ -3,7 +3,6 @@
 import streamlit as st
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
-from visual_utils import stream_langchain_messages
 
 st.title("🦜🔗 LangChain Agent Chat")
 st.markdown("An example of a basic chat application using the `langchain` Python SDK.")
@@ -37,9 +36,16 @@ if prompt := st.chat_input("Ask a question"):
 
     # --------------------------------------------- + 4. Generate response and stream it
     with st.chat_message("assistant"):
+        placeholder = st.empty()
+        response = ""
+
+        # Invoke the agent in streaming mode
         stream = agent.stream(
             {"messages": [{"role": "user", "content": prompt}]},
             config=st.session_state.config,
             stream_mode="messages",
         )
-        st.write_stream(stream_langchain_messages(stream))
+        # Update the placeholder with streaming response
+        for chunk, metadata in stream:
+            response += chunk.content
+            placeholder.markdown(response)
